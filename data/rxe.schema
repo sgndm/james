@@ -1,0 +1,30 @@
+#http://www.mexi.be/documents/hl7/ch400050.htm
+#http://www.hosinc.com/products/interfaces/interface_documentation.htm#RXE
+#
+#Seq	Len	Fmt	Opt	Element Name
+0	|3	|SI	|Segment ID = "RXE"
+1	|200	|TQ	|Quantity/Timing
+2	|100	|CE	|Give code/Drug identification
+3	|20	|NM	|Give amount/minimum
+4	|20	|NM	|Give amount/maximum
+5	|60	|CE	|Give units
+6	|60	|CE	|Give dosage form
+7	|200	|ST	|Providers administration instructions
+8	|12	|ID	|Deliver to location
+9	|1	|ID	|Substitution flag
+10	|20	|NM	|Dispense amount
+11	|60	|CE	|Dispense units
+12	|3	|NM	|Number of refills ordered
+13	|60	|CN	|Ordering doctor’s DEA number
+14	|60	|CN	|Pharmacist verifier ID
+15	|20	|ST	|Prescription number
+16	|20	|NM	|Number of refills remaining
+17	|20	|NM	|Number of refills/doses dispensed
+18	|26	|TS	|Date/time of most recent refill/dispense
+19	|10	|CQ	|Total daily dose
+20	|1	|ID	|Needs human review
+21	|200	|ST	|Pharmacy special dispensing instructions
+22	|20	|ST	|Give per (unit of time)
+23	|6	|ST	|Give rate amount  (for IV solution orders)
+24	|20	|ST	|Give rate units     (for IV solution orders)
+

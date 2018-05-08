@@ -1,0 +1,40 @@
+th , td 
+{
+	height:30px;
+	font-style:normal;
+	font-size: 16px;
+  	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-align: center;
+	margin: 0px;
+	padding: 1px;
+}
+td
+{
+	font-weight: 300;
+}
+img.mine 
+{
+	height:30px;
+	width:80%;
+}
+
+select[class*="span"] 
+{
+	height:35px;
+	box-sizing: border-box;
+  	-moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"]
+{
+	height:30px;
+	width:80%;
+}
+input[type="button"]
+{
+	height:30px;
+}

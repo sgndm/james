@@ -1,0 +1,90 @@
+@import url("bootstrap/variables.less");
+@import url("bootstrap/mixins.less");
+
+.progress {
+	&.progress-small {
+		height: 15px;
+	}
+	&.progress-tiny {
+		height: 7px;
+	}
+}
+
+.tooltip {
+	&.small {
+		.tooltip-inner {
+			padding: 2px 7px;
+		}
+	}
+	.tooltip-iwrapper {
+		position: relative;
+		left: -50%;
+	}
+}
+
+[class*="span"].white-card {
+	.box-sizing(border-box);
+}
+
+#our-team {
+	.white-card {
+		blockquote {
+			margin: 0;
+		}
+		h5 {
+			small {
+				display:block;
+				width: 100%;
+				padding-left: 1.2em;
+				.box-sizing(border-box);
+			}
+		}
+	}
+}
+
+.opp_img_wrapper {
+	overflow: hidden;
+	.iwrapper {
+		position: relative;
+		display: inline-block;
+		left: 50%;
+		img {
+			position: relative;
+			left: -50%;
+		}	
+	}
+}
+
+.tab-content .sub-section {
+	.btn {
+		&.save {
+			display: none;
+		}
+	}
+	.edit {
+		display: none;
+	}
+}
+
+.subheader {
+	padding-left: 1.2em;
+	display: block;
+}
+
+.opportunity {
+	padding: 0;
+	.main {
+		padding: 10px;
+	}
+	.meta {
+		border-top: 1px @grayLight solid;
+		.part {
+			display: inline-block;
+			padding: 10px 25px;
+			border-right: 1px @grayLight solid;
+			.value {
+				font-weight: bold;
+			}
+		}
+	}
+}

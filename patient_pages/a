@@ -1,0 +1,29 @@
+
+      if ( $l_fld_id == "username" ) 
+      {
+?>
+  <div class="row">
+  <div class='span6'>
+  Phone Carrier <BR/><select  class="span2" id="record_phone_carrier">
+<?php
+     $ct = ConstantModel::get(); 
+     $str = $ct->getsmsgatewayaddress();
+     $sms_ar = explode(";_:",$str);
+     for ( $p_idx=0; $p_idx< count($sms_ar); $p_idx++)
+     {
+         $l_s1 = $sms_ar[$p_idx];
+         $l_fld_ar = explode(",",$l_s1);
+
+         $l_nm=$l_fld_ar[0];
+         $l_val=$l_fld_ar[1];
+         $lselected = "";
+          if ( $l_phone_carrier  == $l_val )
+            $lselected = "SELECTED";
+       echo "<option value=\"$l_val\" $lselected >$l_nm</option>";
+      }
+?>
+  </select>
+  </div>
+  </div>
+<?php
+      }

@@ -1,0 +1,32 @@
+#HL7 Segment : OBX : Observation Information
+# ( http://jwenet.net/notebook/1777/)
+#
+#OBX Fields
+#
+#  Field   Type  Len  Description
+#  =====   ====  ===  ===========================================
+#23456789012345678901234567890123456789012345678901234567890
+  OBX-1   |SI    | 10  |Set ID - OBX
+  OBX-2   |ID    |  2  |Value Type
+  OBX-3   |CE    |590  |Observation Identifier
+  OBX-4   |ST    | 20  |Observation Sub-ID
+  OBX-5   |Varies|  65536  |Observation Value
+  OBX-6   |CE    | 60  |Units
+  OBX-7   |ST    | 10  |References Range
+  OBX-8   |ID    |  5  |Abnormal Flags
+  OBX-9   |NM    |  5  |Probability
+  OBX-10  |ID    |  2  |Nature of Abnormal Test
+  OBX-11  |ID    |  1  |Observ Result Status
+  OBX-12  |TS    | 26  |Date Last Obs Normal Values
+  OBX-13  |ST    | 20  |User Defined Access Checks
+  OBX-14  |TS    | 26  |Date/Time of the Observation
+  OBX-15  |CE    | 60  |Producer's ID
+  OBX-16  |XCN   | 80  |Responsible Observer
+  OBX-17  |CE    | 60  |Observation Method
+#Notes
+#
+#keywords:
+#date: 07/26/2005
+~                                                                                      
+~                                                                                      
+~                       

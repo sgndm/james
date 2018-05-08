@@ -1,0 +1,19 @@
+.mycontainer {
+ //height:98%;
+ //width:98%;
+ //align:center;
+ //border-style:solid;
+ //border-color:#ff0000 #0000ff;
+}
+.mybox {
+ height:200px;
+ width:300px;
+ align:center;
+ border-style:solid;
+ border-color:#ff0000 #0000ff;
+}
+
+.admin {
+	background-color: #B50128;
+	color: white;
+}

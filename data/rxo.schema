@@ -1,0 +1,26 @@
+# REF : http://www.hosinc.com/products/interfaces/interface_documentation.htm#RXO
+#PID-1   |SI   |   4 |Set ID - PID
+#Seq	Len	Fmt	Name
+0	|3	|SI     |ID = "RXO"
+1	|100	|CE	|Give code (Drug identification)
+2	|20	|NM	|Give amount/minimum
+3	|20	|NM	|Give amount/maximum
+4	|60	|CE	|Give units
+5	|60	|CE	|Give dosage form
+6	|200	|ST	|instructions
+7	|200	|ST	|instructions
+8	|12	|ID	|to location
+9	|1	|ID	|Substitution 
+10	|100	|CE	|Dispense code
+11	|20	|NM	|Dispense amount
+12	|60	|CE	|Dispense units
+13	|3	|NM	|Number of refills ordered
+14	|60	|CN	|Ordering doctor’s DEA number
+15	|60	|CN	|Pharmacist verifier ID
+16	|1	|ID	|Needs human review
+17	|20	|ST	|Requested Give per (unit of time)
+18	|20	|ST	|Requested Give strength
+19	|20	|ST	|Requested Give strength units
+20	|200	|CE	|Indications
+21	|6	|ST	|Requested Give rate amount (for IV solution orders)
+22	|20	|ST	|Requested Give rate units (for IV solution orders)

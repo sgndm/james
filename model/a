@@ -1,0 +1,1 @@
+DataModel.php:     $sql = "select b.id, ua.patient_id,c.medication medicine, ua.created_ts ,DATE_FORMAT(ua.created_ts,'%m/%d/%Y') created_ts_fmt, ua.response , ua.total_choice,ua.total_answer ".

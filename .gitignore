@@ -1,0 +1,4 @@
+/uploads/*
+/model/ConstantModel.php
+.project
+*.log
