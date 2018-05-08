@@ -1,7 +1,7 @@
 function kalert( msg)
 {
    // none .
-   alert(msg);
+   // alert(msg);
 }
 function callchange(title, change)
 {
