@@ -1,8 +1,8 @@
 <?php require_once("init_setup.php") ?>
 <?php include("head.php") ?>
 <?php
-      $ctrl = Controller::get(); 
-      $ux = UserModel::get(); 
+      $ctrl = Controller::get();
+      $ux = UserModel::get();
       $l_unique_id= date('YmdHis').$ctrl->createUniqueID(8);
       $user_id= $ctrl->getUserID();
       $user_type= $ctrl->getUserType();
@@ -37,24 +37,29 @@
 <script type="text/javascript">
 function patientsave()
 {
+  // alert('patient save');
 	var cleanNumber = $('#mobile-number').intlTelInput("getCleanNumber");
 	var countryData = $("#mobile-number").intlTelInput("getSelectedCountryData");
 	var dialCode = countryData["dialCode"]; //does not include +
 	var withoutDialCode = cleanNumber.replace("+" + dialCode, "");
 	$("#record_phone").val(withoutDialCode);
 	$("#record_dial_code").val(dialCode);
-	
+
    callme('record,savepatient,');
 }
 function localsavepatient(pdata)
 {
+  // console.log(pdata);
+  // alert('local save patient');
   kobj = JSON.parse(pdata);
   if ( kobj.success == "false" )
   {
+    // alert('eror');
      show_error  ( kobj.message);
   }
   else if ( kobj.success == "true" )
   {
+    // alert('success');
      show_info("Successfully updated")
      for ( var idx=0; idx<kobj.INSERTED_ROWS;idx++)
      {
@@ -78,6 +83,8 @@ function localsavepatient(pdata)
 <input type="hidden" id="record_copied_file" value="" />
 <input type="hidden" id="record_filecreated" value="0" />
 <input type="hidden" id="record_file_type" value="profile" />
+<input type="hidden" name="record_isactive " value="false">
+<input type="hidden" name="record_ignore" value="false">
 <?php
       for ( $idx =0; $idx <$fieldtotal; $idx++)
 {
@@ -89,23 +96,25 @@ function localsavepatient(pdata)
       $l_fld_type=  $ctrl->mytrim($lfld[2]);
       $l_fld_minlength=  $ctrl->mytrim($lfld[3]);
       $l_fld_value=  $ctrl->mytrim($lfld[4]);
-      if ( $l_fld_id == "username" ) 
+      if ( $l_fld_id == "username" )
       {
          $l_phone_carrier  = "";
 ?>
 <div class="row">
   <div class='span6'>
   <label>Discharge Diagnosis</label><select  class="span5" id="record_discharge_diagnosis">
+    <option value="0">Select Diagnosis</option>
+    <option value="diagnosis">diagnosis</option>
 <?php
      $l_diagnosis_id  = $p_rec["discharge_diagnosis"];
-     $ct = ConstantModel::get(); 
+     $ct = ConstantModel::get();
      $data='{}';
      $p_obj=json_decode($data);
      $dx = DataModel::get();
-     
+
          $sql = "SELECT * FROM diagnosis_list";
          $ss_obj = $dx->getRecords($p_obj, $sql);
-         
+
     $s_fieldtotal = $ss_obj->{"total_records"};
      for ( $s_idx =0; $s_idx <$s_fieldtotal; $s_idx++)
      {
@@ -113,11 +122,11 @@ function localsavepatient(pdata)
         $p_nm=$rr_rec["diagnosis"];
         $p_id=$rr_rec["id"];
         $p_sel="";
-        if ( $p_id == $l_diagnosis_id ) 
+        if ( $p_id == $l_diagnosis_id )
            $p_sel="SELECTED";
         echo "<OPTION $p_sel value='". $p_id . "'>$p_nm</OPTION>";
      }
-     
+
 ?>
   </select>
   </div>
@@ -137,8 +146,10 @@ function localsavepatient(pdata)
   <div class="row">
   <div class='span6'>
   <label>Phone Carrier</label><select  class="span5" id="record_phone_carrier">
+    <option value="0">Select Phone Carrier</option>
+    <option value="Mobitel">mobitel</option>
 <?php
-     $ct = ConstantModel::get(); 
+     $ct = ConstantModel::get();
      $str = $ct->getsmsgatewayaddress();
      $sms_ar = explode(";_:",$str);
      for ( $p_idx=0; $p_idx< count($sms_ar); $p_idx++)
@@ -149,7 +160,7 @@ function localsavepatient(pdata)
          $l_nm=$l_fld_ar[0];
          $l_val=$l_fld_ar[1];
          $lselected = "";
-         if ( $p_idx == 0 ) 
+         if ( $p_idx == 0 )
          {
             $l_phone_carrier  = $l_val;
             $lselected = "SELECTED";
@@ -164,9 +175,11 @@ function localsavepatient(pdata)
   <div class="row">
   <div class='span6'>
   <label>Clinic</label><select  class="span5" id="record_clinic_id">
+    <option value="0">Select clinic</option>
+    <option value="3">Clinic 1</option>
 <?php
      $l_clinic_id  = $p_rec["clinic_id"];
-     $ct = ConstantModel::get(); 
+     $ct = ConstantModel::get();
      $data='{}';
      $p_obj=json_decode($data);
      $dx = DataModel::get();
@@ -179,7 +192,7 @@ function localsavepatient(pdata)
      {
          $sql = "SELECT * FROM user WHERE id = $user_id";
          $ss_obj = $dx->getRecords($p_obj, $sql);
-     } 
+     }
      else if($user_type == "3")//Doctor
      {
          $sqlClinicIds = "SELECT clinic_id FROM clinic_doctor WHERE doctor_id = $user_id AND isConnected = 'Y'";
@@ -197,7 +210,7 @@ function localsavepatient(pdata)
          $sql = "SELECT * FROM user WHERE id = $clinicId";
          $ss_obj = $dx->getRecords($p_obj, $sql);
      }
-     
+
      $s_fieldtotal = $ss_obj->{"total_records"};
      for ( $s_idx =0; $s_idx <$s_fieldtotal; $s_idx++)
      {
@@ -205,12 +218,13 @@ function localsavepatient(pdata)
         $p_nm=$rr_rec["first_name"];
         $p_id=$rr_rec["id"];
         $p_sel="";
-        if ( $p_id == $l_clinic_id ) 
+        if ( $p_id == $l_clinic_id )
            $p_sel="SELECTED";
         echo "<OPTION $p_sel value='". $p_id . "'>$p_nm</OPTION>";
      }
-     
+
 ?>
+
   </select>
   </div>
   </div>
@@ -220,12 +234,14 @@ function localsavepatient(pdata)
   <div class="row">
   <div class='span6'>
   <label>Doctor</label><select  class="span5" id="record_doctor_id">
+    <option value="0">Select D</option>
+    <option value="2">D 1</option>
 <?php
      $l_doctor_id  = $p_rec["doctor_id"];
-     $ct = ConstantModel::get(); 
+     $ct = ConstantModel::get();
      $data='{}';
      $p_obj=json_decode($data);
-     $dx = DataModel::get(); 
+     $dx = DataModel::get();
      if($user_type == "1")
      {
          $sql = "SELECT * FROM user WHERE user_type = 3";
@@ -258,8 +274,8 @@ function localsavepatient(pdata)
          }
          $ss_obj = $dx->getRecords($p_obj, $sql);
      }
-     
-     
+
+
      $s_fieldtotal = $ss_obj->{"total_records"};
      for ( $s_idx =0; $s_idx <$s_fieldtotal; $s_idx++)
      {
@@ -267,7 +283,7 @@ function localsavepatient(pdata)
         $p_nm=$rr_rec["first_name"];
         $p_id=$rr_rec["id"];
         $p_sel="";
-        if ( $p_id == $l_doctor_id ) 
+        if ( $p_id == $l_doctor_id )
            $p_sel="SELECTED";
         echo "<OPTION $p_sel value='". $p_id . "'>$p_nm</OPTION>";
      }
@@ -283,12 +299,12 @@ function localsavepatient(pdata)
 <div class="row">
 <div class='span6'>
 <label><?php echo $l_fld_title; ?></label>
-<input id="record_<?php echo $l_fld_id; ?>" value="<?php echo $l_fld_value; ?>" 
-       minlength="<?php echo $l_fld_minlength; ?>" 
+<input id="record_<?php echo $l_fld_id; ?>" value="<?php echo $l_fld_value; ?>"
+       minlength="<?php echo $l_fld_minlength; ?>"
   title="<?php echo $l_fld_title; ?>" class='span5' placeholder='<?php $l_fld_title; ?>...' type='<?php echo $l_fld_type; ?>' datatype='<?php echo $l_fld_type; ?>'>
 </div>
 </div>
-<?php 
+<?php
    }
 ?>
 <div class="row">
@@ -305,7 +321,7 @@ function localsavepatient(pdata)
 </div>
 <div class='span2'>
 
-				
+
 </div>
 
 
@@ -325,7 +341,7 @@ function localsavepatient(pdata)
     var dial = $("#record_dial_code").val();
     var stringToAddToMobileNumber = "+" + dial + phone;
     $("#mobile-number").intlTelInput("setNumber", stringToAddToMobileNumber);
-    		
+
 
   });
     </script>
