@@ -147,7 +147,7 @@ function localsavepatient(pdata)
   <div class='span6'>
   <label>Phone Carrier</label><select  class="span5" id="record_phone_carrier">
     <option value="0">Select Phone Carrier</option>
-    <option value="Mobitel">mobitel</option>
+    <option value="pc_01">Phone carrier 01</option>
 <?php
      $ct = ConstantModel::get();
      $str = $ct->getsmsgatewayaddress();
