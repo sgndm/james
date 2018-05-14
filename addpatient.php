@@ -104,7 +104,10 @@ function localsavepatient(pdata)
   <div class='span6'>
   <label>Discharge Diagnosis</label><select  class="span5" id="record_discharge_diagnosis">
     <option value="0">Select Diagnosis</option>
-    <option value="diagnosis">diagnosis</option>
+    <option value="diagnosis 1">diagnosis 1</option>
+    <option value="diagnosis 2">diagnosis 2</option>
+    <option value="diagnosis 3">diagnosis 3</option>
+    <option value="diagnosis 4">diagnosis 4</option>
 <?php
      $l_diagnosis_id  = $p_rec["discharge_diagnosis"];
      $ct = ConstantModel::get();
@@ -235,7 +238,10 @@ function localsavepatient(pdata)
   <div class='span6'>
   <label>Doctor</label><select  class="span5" id="record_doctor_id">
     <option value="0">Select D</option>
-    <option value="2">D 1</option>
+    <option value="1">Doctor 1</option>
+    <option value="2">Doctor 2</option>
+    <option value="3">Doctor 3</option>
+    <option value="4">Doctor 4</option>
 <?php
      $l_doctor_id  = $p_rec["doctor_id"];
      $ct = ConstantModel::get();
