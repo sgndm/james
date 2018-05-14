@@ -39,7 +39,7 @@ class ConstantModel
    }
 
    public function getUploaddir() {
-     $path = "photo/patient_img/";
+     $path = "uploads/";
      return $path;
    }
 

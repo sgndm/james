@@ -1,7 +1,7 @@
 <?php require_once("init_setup.php") ?>
 <?php include('head.php') ?>
 <?php
-    $ctrl = Controller::get(); 
+    $ctrl = Controller::get();
     $l_user_id= $ctrl->getUserID();
 
     $p_curtab = $ctrl->getPostParamValue("current_tab");
@@ -12,7 +12,7 @@
 	//$p_patient_id = $ctrl->getGetParamValue("patient");
     $_SESSION["patient_called_by"]=$p_called_by;
 
-    if ( $p_curtab  == null || $p_curtab  == "none" ) 
+    if ( $p_curtab  == null || $p_curtab  == "none" )
        $p_curtab  = "compliance";
     if ( $p_called_by == "addpatient" )
        $p_curtab  = "medication";
@@ -63,17 +63,17 @@
     if ( $p_curtab  == "phyact" )
     $p_active_phyact   = "active";
 
-    
+
     if ( $p_patient_id == null || $p_patient_id == "" )
        $p_patient_id = "0";
-    if ( $p_patient_id > 0 ) 
+    if ( $p_patient_id > 0 )
     {
         $_SESSION["view_patient_id"]=$p_patient_id ;
     }
     $p_patient_id = $_SESSION["view_patient_id"];
     if ( $p_patient_id == null || $p_patient_id == "" )
        $p_patient_id = "0";
-    if ( $p_patient_id == 0 ) 
+    if ( $p_patient_id == 0 )
     {
         header("Location: myhome.php");
         return;
@@ -81,14 +81,14 @@
     $user_id= $ctrl->getUserID();
 
     $data='{"segment":"pid"}';
-    $ux = UserModel::get(); 
+    $ux = UserModel::get();
     $p_rec = $ux->getPatient($p_patient_id);
-    
+
     $l_photourl = $p_rec["photourl"];
 
     $l_name = $p_rec["first_name"]. " ".
                 $p_rec["last_name"];
-                
+
     $l_discharge_diagnosis = $p_rec["discharge_diagnosis"];
     $l_discharge_diagnosis = $ux->getDiagnosis($l_discharge_diagnosis);
     $l_surgical_procedure = $p_rec["surgical_procedure"];
@@ -100,11 +100,11 @@
 
 ?>
 <input type="hidden" id="record_patient_id" value="<?php echo $p_patient_id; ?>">
-	
-				
+
+
 <BR/>
 <div class="row" >
-<div class="span2"> 
+<div class="span2">
 
    <img style="height:10%;width:100%"  src="<?php echo $l_photourl; ?>" />
    <p align="center"> <font size=3 color="#B50128">
@@ -137,7 +137,7 @@
    <BR/>
    <img style="height:10%;width:100%"  src="assets/images/analytics.png"
  onclick="callmenuitem('dashboard.php','')"  />-->
- 
+
 
    <button class="btn btn-primary btn-block" style="height: 60px;" type="button"
    onClick="callmenuitem('addpatient.php','')" >

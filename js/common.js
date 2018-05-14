@@ -577,15 +577,15 @@ function call_image()
          if (xmlhttp.readyState==4 && xmlhttp.status==200)
          {
                data= xmlhttp.responseText;
-							 console.log(data);
-               // obj = JSON.parse(data);
-               // if ( obj.success == "false" )
-               // {
-               //       show_error  ( obj.message);
-               // }
-               // if ( obj.success == "true" )
-               // {
-               // } // true
+							 // console.log(data);
+               obj = JSON.parse(data);
+               if ( obj.success == "false" )
+               {
+                     show_error  ( obj.message);
+               }
+               if ( obj.success == "true" )
+               {
+               } // true
           }
    };
    url="uploadfile.php";
