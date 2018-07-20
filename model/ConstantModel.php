@@ -19,22 +19,31 @@ class ConstantModel
 
    public function getMYSQL()
    {
-         $out["server"] ="localhost";
+        $out["server"] ="localhost";
         $out["user"] = "root";
         $out["password"] = "dinu@IS#054#";
+        // $out["password"] = "";
         $out["database"]= "mobimbd";
 
         return $out;
-
-
    }
 
     public function getTitle()
    {
-
-
         return "Mobimd";
+   }
 
+   // added by dinesh 0n 11/05/2018
+   public function getsmsgatewayaddress() {
+
+   }
+
+   public function getUploaddir() {
+     $path = "uploads/";
+     return $path;
+   }
+
+   public function getSendGrid() {
 
    }
 

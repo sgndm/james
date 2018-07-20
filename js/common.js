@@ -161,7 +161,7 @@ function callme(param)
   fldnm="#" + n[2];
 
   l_res =validatefields(l_prefix);
-  //alert( "1 validation res="  + l_res + " prefix = " + l_prefix);
+  // alert( "1 validation res="  + l_res + " prefix = " + l_prefix);
   if ( l_res  == false )
       return;
   if ( cmd == "contact" )
@@ -216,6 +216,7 @@ function callme(param)
   else {
      if ( l_res )
      {
+			 	 // alert('callme else');
          return call_common(cmd,fldnm,l_prefix,true,null);
      }
   }
@@ -417,17 +418,23 @@ function callserver(cmd,fldname,p_prefix,serverparam)
                kalert( data);
 
         var fname="call_" + cmd;
-        //alert( " got reply " + fname);
+        // alert( " got reply " + fname);
         myfunction = eval(fname);
+				// alert(myfunction);
         if ( myfunction != null )
         {
-					console.log(data);
+					// console.log(data);
            //alert( " calling myfunction");
+					 // alert( " got call common");
+					 console.log('cmd' + cmd);
+					 console.log('fldname' + fldname);
+					 console.log('p_prefix' + p_prefix);
+					 console.log('data' + data);
            myfunction(cmd,fldname,p_prefix,false,data);
         }
         else
           {
-           //alert( " got call common");
+
            call_common(cmd,fldname,p_prefix,false,data);
           }
           }
@@ -570,6 +577,7 @@ function call_image()
          if (xmlhttp.readyState==4 && xmlhttp.status==200)
          {
                data= xmlhttp.responseText;
+							 // console.log(data);
                obj = JSON.parse(data);
                if ( obj.success == "false" )
                {
@@ -711,6 +719,7 @@ function call_common(cmd,fldname,p_prefix,p_invokeservercall,reply_param)
         }
         else
         {
+					// console.log(data);
             obj = JSON.parse(data);
      if  ( cmd == "allmedication" )
      {
@@ -738,9 +747,12 @@ function call_common(cmd,fldname,p_prefix,p_invokeservercall,reply_param)
      }
      else if  ( cmd == "savepatient" )
      {
+			  // alert('call_cmd savepatient');
+				// console.log(data);
         localsavepatient(data);
      }
      else
+		 // obj = JSON.parse(data); // added by dinesh
             if ( obj.success == "false" )
             {
                   show_error  ( obj.message);

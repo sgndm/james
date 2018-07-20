@@ -545,26 +545,26 @@ class Controller
        $message = $l_message;
        require_once("include_sendgrid.php");
        $ct = ConstantModel::get();
-       $p1= $ct->getSendGrid();
-       $from = $p1["mail_from"];
-       $cc   = $p1["mail_cc"];
-       $headers = "From:" . $from . ", Content-type: text/html,";
-       $p_user=$p1["user"];
-       $p_password=$p1["password"];
-       $sendgrid = new SendGrid($p_user,$p_password);
-       $mail     = new SendGrid\Mail();
-       $mail->addTo($to)->
-              setFrom($from)->
-              setSubject($subject)->
-              setText($message);
-       $res=$sendgrid->web->send($mail);
-	   $to = "kylie@promd.co" ;
-	   $mail     = new SendGrid\Mail();
-       $mail->addTo($to)->
-              setFrom($from)->
-              setSubject($subject)->
-              setText($message);
-       $res=$sendgrid->web->send($mail);
+     //   $p1= $ct->getSendGrid();
+     //   $from = $p1["mail_from"];
+     //   $cc   = $p1["mail_cc"];
+     //   $headers = "From:" . $from . ", Content-type: text/html,";
+     //   $p_user=$p1["user"];
+     //   $p_password=$p1["password"];
+     //   $sendgrid = new SendGrid($p_user,$p_password);
+     //   $mail     = new SendGrid\Mail();
+     //   $mail->addTo($to)->
+     //          setFrom($from)->
+     //          setSubject($subject)->
+     //          setText($message);
+     //   $res=$sendgrid->web->send($mail);
+	   // $to = "kylie@promd.co" ;
+	   // $mail     = new SendGrid\Mail();
+     //   $mail->addTo($to)->
+     //          setFrom($from)->
+     //          setSubject($subject)->
+     //          setText($message);
+     //   $res=$sendgrid->web->send($mail);
 	}
 	public function sendDataBaseError($l_message)
 	{
